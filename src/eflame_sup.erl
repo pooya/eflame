@@ -15,6 +15,7 @@
 %% API functions
 %% ===================================================================
 
+-spec start_link() -> 'ignore' | {'error',_} | {'ok',pid()}.
 start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
@@ -22,6 +23,7 @@ start_link() ->
 %% Supervisor callbacks
 %% ===================================================================
 
+-spec init([]) -> {'ok',{{'one_for_one',5,10},[]}}.
 init([]) ->
     {ok, { {one_for_one, 5, 10}, []} }.
 
